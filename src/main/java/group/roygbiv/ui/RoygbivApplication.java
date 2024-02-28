@@ -95,7 +95,8 @@ public class RoygbivApplication extends Application {
     }
 
     private void buildDiscardPileButton() {
-        discardPileButton = new Button(gameController.getTopDiscardCard().toString());
+        Card c = gameController.getTopDiscardCard();
+        discardPileButton = new Button(c.toString());
         discardPileButton.setMinHeight(Style.CARD_HEIGHT);
         discardPileButton.setMinWidth(Style.CARD_WIDTH);
         discardPileButton.setBackground(Style.getBackground(c.getColor()));
