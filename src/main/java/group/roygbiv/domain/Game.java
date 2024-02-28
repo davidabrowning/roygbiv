@@ -10,11 +10,13 @@ public class Game {
     private int turnCounter;
     private final List<Player> players;
     private final Deck deck;
+    private boolean isGameOver;
 
     public Game() {
         turnCounter = 0;
         deck = new Deck();
         players = new ArrayList<>();
+        isGameOver = false;
     }
 
     public void advanceTurn() {
