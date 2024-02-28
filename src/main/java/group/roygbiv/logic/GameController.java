@@ -35,6 +35,20 @@ public class GameController {
         buttonCardMap.put(b, c);
     }
 
+    public void handleDrawPileHover(Button b) {
+        if (isGameOver()) {
+            return;
+        }
+        application.highlightButton(b);
+    }
+
+    public void handleDrawPileMouseExit(Button b) {
+        if (game.topDrawPileCardIsRevealed()) {
+            return;
+        }
+        application.unhighlightButton(b);
+    }
+
     public void handleDrawPileClick() {
         if (game.topDrawPileCardIsRevealed()) {
             return;
