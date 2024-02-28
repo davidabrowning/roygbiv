@@ -164,5 +164,6 @@ public class GameController {
     public Player getCurrentTurnPlayer() { return game.getCurrentTurnPlayer(); }
     public Card getTopDiscardCard() { return game.getTopDiscardCard(); }
     public int getPlayerNum(Player p) { return game.getPlayerNum(p); }
+    public boolean isGameOver() { return game.isGameOver(); }
 
 }
