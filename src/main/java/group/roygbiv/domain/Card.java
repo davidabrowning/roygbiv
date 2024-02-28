@@ -1,5 +1,7 @@
 package group.roygbiv.domain;
 
+import javafx.scene.paint.Color;
+
 public class Card {
 
     private int value;
