@@ -100,6 +100,11 @@ public class Game {
     public Card getTopDiscardCard() { return deck.getTopDiscardCard(); }
     public boolean topDrawPileCardIsRevealed() { return deck.topDrawPileCardIsRevealed(); }
 
+    public void checkForVictory(Player p) {
+        if (p.getHand().isInConsecutiveOrder()) {
+            isGameOver = true;
+        }
+    }
 
 
 }
