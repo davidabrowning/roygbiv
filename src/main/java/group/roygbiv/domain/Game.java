@@ -88,6 +88,10 @@ public class Game {
         advanceTurn();
     }
 
+    public void swapCards(Player p, Card cardToRemove, Card cardToTake) {
+        p.getHand().replaceCard(cardToRemove, cardToTake);
+    }
+
     public void initializeDiscardPile() {
         deck.initializeDiscardPile();
     }
