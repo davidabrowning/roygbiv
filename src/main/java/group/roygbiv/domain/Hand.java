@@ -32,6 +32,17 @@ public class Hand {
         cards.add(location, cardToAdd);
     }
 
+    public boolean isInConsecutiveOrder() {
+        int previousCardValue = cards.getFirst().getValue();
+        for (Card c : cards) {
+            if (c.getValue() < previousCardValue) {
+                return false;
+            }
+            previousCardValue = c.getValue();
+        }
+        return true;
+    }
+
 
 
 }
