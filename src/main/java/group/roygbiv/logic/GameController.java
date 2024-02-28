@@ -50,6 +50,9 @@ public class GameController {
     }
 
     public void handleDrawPileClick() {
+        if (isGameOver()) {
+            return;
+        }
         if (game.topDrawPileCardIsRevealed()) {
             return;
         }
@@ -77,6 +80,9 @@ public class GameController {
     }
 
     public void handleDiscardPileClick() {
+        if (isGameOver()) {
+            return;
+        }
         if (game.topDrawPileCardIsRevealed()) {
             return;
         }
@@ -105,6 +111,9 @@ public class GameController {
     }
 
     public void handleHandClick(Player p, Button b) {
+        if (isGameOver()) {
+            return;
+        }
         if (!game.isCurrentTurn(p)) {
             return;
         }
