@@ -126,6 +126,7 @@ public class GameController {
         // If the player is drawing from the draw pile
         if (game.topDrawPileCardIsRevealed()) {
             buttonCardMap.replace(b, clickedCard, desiredCard);
+            game.swapCards(p, clickedCard, desiredCard);
             game.playerTookTopDrawPileCard();
         } else {
             Card topDiscardCard = game.getTopDiscardCard();
