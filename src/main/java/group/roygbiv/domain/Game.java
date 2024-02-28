@@ -36,6 +36,8 @@ public class Game {
         return p == this.getCurrentTurnPlayer();
     }
 
+    public boolean isGameOver() { return isGameOver; }
+
     public void initializeDeckAndPlayers() {
         deck.reset();
         players.clear();
