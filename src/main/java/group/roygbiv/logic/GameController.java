@@ -143,6 +143,16 @@ public class GameController {
         this.desiredCard = null;
     }
 
+    public void handleVictoryButtonClick(Player p) {
+        if (isGameOver()) {
+            return;
+        }
+        game.checkForVictory(p);
+        if (game.isGameOver()) {
+            application.updateCurrentTurnLabel();
+        }
+    }
+
     public Card getMappedHandCard(Button b) { return buttonCardMap.get(b); }
     public List<Player> getPlayers() {
         return game.getPlayers();
