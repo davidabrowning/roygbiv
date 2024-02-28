@@ -88,6 +88,8 @@ public class RoygbivApplication extends Application {
         drawPileButton.setBorder(Style.unhighlightedBorder);
         drawPileButton.setMinHeight(Style.CARD_HEIGHT);
         drawPileButton.setMinWidth(Style.CARD_WIDTH);
+        drawPileButton.setOnMouseEntered(event -> gameController.handleDrawPileHover(drawPileButton));
+        drawPileButton.setOnMouseExited(event -> gameController.handleDrawPileMouseExit(drawPileButton));
         drawPileButton.setOnAction(event -> gameController.handleDrawPileClick());
     }
 
@@ -97,6 +99,8 @@ public class RoygbivApplication extends Application {
         discardPileButton.setMinWidth(Style.CARD_WIDTH);
         discardPileButton.setBackground(Background.fill(Color.LIGHTGREEN));
         discardPileButton.setBorder(Style.unhighlightedBorder);
+        discardPileButton.setOnMouseEntered(event -> gameController.handleDiscardPileHover(discardPileButton));
+        discardPileButton.setOnMouseExited(event -> gameController.handleDiscardPileMouseExit(discardPileButton));
         discardPileButton.setOnAction(event -> gameController.handleDiscardPileClick());
     }
 
@@ -136,6 +140,7 @@ public class RoygbivApplication extends Application {
         buildHandCardButtons(player);
 
         Button roygbiv = new Button("ROY G. BIV!");
+        roygbiv.setOnAction(event -> gameController.handleVictoryButtonClick(player));
         playerVictoryButtonList.add(roygbiv);
     }
 
@@ -144,10 +149,13 @@ public class RoygbivApplication extends Application {
             int playerNum = gameController.getPlayerNum(p);
             Button b = new Button(c.toString());
             b.setBorder(Style.unhighlightedBorder);
-            b.setBackground(Background.fill(Color.LIGHTGREEN));
+            b.setBackground(Style.getBackground(c.getColor()));
+            b.setTextFill(c.getTextColor());
             b.setMinWidth(Style.CARD_WIDTH);
             b.setMinHeight(Style.CARD_HEIGHT);
             b.setOnAction(event -> gameController.handleHandClick(p, b));
+            b.setOnMouseEntered(event -> gameController.handleHandHover(p, b));
+            b.setOnMouseExited(event -> gameController.handleMouseExit(p, b));
             playerHandLayoutList.get(playerNum).getChildren().add(b);
             gameController.mapButtonToCard(b, c);
         }
@@ -159,18 +167,41 @@ public class RoygbivApplication extends Application {
         stage.show();
     }
 
+    public void highlightButton(Button b) { b.setBorder(Style.highlightedBorder); }
+    public void unhighlightButton(Button b) { b.setBorder(Style.unhighlightedBorder); }
+
     public void highlightDrawPile() { drawPileButton.setBorder(Style.highlightedBorder); }
     public void unhighlightDrawPile() { drawPileButton.setBorder(Style.unhighlightedBorder); }
-    public void updateDrawPileButton(Card topCard) { drawPileButton.setText(topCard.toString()); }
-    public void updateDrawPileButton() { drawPileButton.setText("Draw card"); }
+    public void updateDrawPileButton(Card topCard) {
+        drawPileButton.setText(topCard.toString());
+        drawPileButton.setBackground(Style.getBackground(topCard.getColor()));
+        drawPileButton.setTextFill(topCard.getTextColor());
+    }
+    public void updateDrawPileButton() {
+        drawPileButton.setText("Draw card");
+        drawPileButton.setBackground(Style.getBackground(Color.LIGHTGRAY));
+        drawPileButton.setTextFill(Color.BLACK);
+    }
 
     public void highlightDiscardPile() { discardPileButton.setBorder(Style.highlightedBorder); }
     public void unhighlightDiscardPile() { discardPileButton.setBorder(Style.unhighlightedBorder); }
-    public void updateDiscardPileButton() { discardPileButton.setText(gameController.getTopDiscardCard().toString()); }
+    public void updateDiscardPileButton() {
+        Card c = gameController.getTopDiscardCard();
+        discardPileButton.setText(c.toString());
+        discardPileButton.setBackground(Style.getBackground(c.getColor()));
+        discardPileButton.setTextFill(c.getTextColor());
+    }
 
-    public void updateHandCardButtonText(Button b) { b.setText(gameController.getMappedHandCard(b).toString()); }
-    public void updateCurrentTurnLabel() { currentTurnLabel.setText("Current turn: " + gameController.getCurrentTurnPlayer()); }
-
-
-
+    public void updateHandCardButtonText(Button b) {
+        Card c = gameController.getMappedHandCard(b);
+        b.setText(c.toString());
+        b.setBackground(Style.getBackground(c.getColor()));
+        b.setTextFill(c.getTextColor());
+    }
+    public void updateCurrentTurnLabel() {
+        if (gameController.isGameOver()) {
+            currentTurnLabel.setText("Game over!");
+        } else
+            currentTurnLabel.setText("Current turn: " + gameController.getCurrentTurnPlayer());
+    }
 }
