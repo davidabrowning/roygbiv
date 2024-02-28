@@ -60,12 +60,48 @@ public class GameController {
         application.updateDrawPileButton(desiredCard);
     }
 
+    public void handleDiscardPileHover(Button b) {
+        if (isGameOver()) {
+            return;
+        }
+        if (game.topDrawPileCardIsRevealed()) {
+            return;
+        }
+        application.highlightButton(b);
+    }
+
+    public void handleDiscardPileMouseExit(Button b) {
+        if (desiredCard == null) {
+            application.unhighlightButton(b);
+        }
+    }
+
     public void handleDiscardPileClick() {
         if (game.topDrawPileCardIsRevealed()) {
             return;
         }
         application.highlightDiscardPile();
         desiredCard = getTopDiscardCard();
+    }
+
+    public void handleHandHover(Player p, Button b) {
+        if (isGameOver()) {
+            return;
+        }
+        if (!game.isCurrentTurn(p)) {
+            return;
+        }
+        if (desiredCard == null) {
+            return;
+        }
+        application.highlightButton(b);
+    }
+
+    public void handleMouseExit(Player p, Button b) {
+        if (isGameOver()) {
+            return;
+        }
+        application.unhighlightButton(b);
     }
 
     public void handleHandClick(Player p, Button b) {
