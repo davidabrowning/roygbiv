@@ -84,7 +84,8 @@ public class RoygbivApplication extends Application {
 
     private void buildDrawPileButton() {
         drawPileButton = new Button("Draw card");
-        drawPileButton.setBackground(Background.fill(Color.LIGHTGRAY));
+        drawPileButton.setBackground(Style.getBackground(Color.LIGHTGRAY));
+        drawPileButton.setTextFill(Color.BLACK);
         drawPileButton.setBorder(Style.unhighlightedBorder);
         drawPileButton.setMinHeight(Style.CARD_HEIGHT);
         drawPileButton.setMinWidth(Style.CARD_WIDTH);
@@ -97,7 +98,8 @@ public class RoygbivApplication extends Application {
         discardPileButton = new Button(gameController.getTopDiscardCard().toString());
         discardPileButton.setMinHeight(Style.CARD_HEIGHT);
         discardPileButton.setMinWidth(Style.CARD_WIDTH);
-        discardPileButton.setBackground(Background.fill(Color.LIGHTGREEN));
+        discardPileButton.setBackground(Style.getBackground(c.getColor()));
+        discardPileButton.setTextFill(c.getTextColor());
         discardPileButton.setBorder(Style.unhighlightedBorder);
         discardPileButton.setOnMouseEntered(event -> gameController.handleDiscardPileHover(discardPileButton));
         discardPileButton.setOnMouseExited(event -> gameController.handleDiscardPileMouseExit(discardPileButton));
