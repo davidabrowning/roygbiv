@@ -4,7 +4,7 @@ import javafx.scene.paint.Color;
 
 public class Card {
 
-    private int value;
+    private final int value;
 
     public Card(int value) {
         this.value = value;
