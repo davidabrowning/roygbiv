@@ -162,9 +162,12 @@ public class RoygbivApplication extends Application {
     public void highlightButton(Button b) { b.setBorder(Style.highlightedBorder); }
     public void unhighlightButton(Button b) { b.setBorder(Style.unhighlightedBorder); }
 
-    public void highlightDrawPile() { drawPileButton.setBorder(Style.highlightedBorder); }
-    public void unhighlightDrawPile() { drawPileButton.setBorder(Style.unhighlightedBorder); }
-    public void updateDrawPileButton(Card topCard) {
+    public void highlightDrawPile() { highlightButton(drawPileButton); }
+    public void unhighlightDrawPile() { unhighlightButton(drawPileButton); }
+    public void highlightDiscardPile() { highlightButton(discardPileButton); }
+    public void unhighlightDiscardPile() { unhighlightButton(discardPileButton); }
+
+    public void revealDrawPileButton(Card topCard) {
         drawPileButton.setText(topCard.toString());
         Style.formatButton(drawPileButton, topCard);
         highlightButton(drawPileButton);
