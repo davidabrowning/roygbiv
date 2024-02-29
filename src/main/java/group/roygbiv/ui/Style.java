@@ -1,9 +1,11 @@
 package group.roygbiv.ui;
 
+import group.roygbiv.domain.*;
+
 import javafx.geometry.Insets;
 import javafx.scene.layout.*;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 
 public class Style {
 
