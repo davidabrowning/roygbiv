@@ -169,7 +169,8 @@ public class RoygbivApplication extends Application {
         Style.formatButton(drawPileButton, topCard);
         highlightButton(drawPileButton);
     }
-    public void updateDrawPileButton() {
+
+    public void resetDrawPileButton() {
         drawPileButton.setText("Draw card");
         Style.formatButton(drawPileButton);
         drawPileButton.setBackground(Style.getBackground(Color.LIGHTGRAY));
