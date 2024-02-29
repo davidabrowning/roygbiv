@@ -89,7 +89,6 @@ public class Game {
     public void initializeDiscardPile() {
         deck.initializeDiscardPile();
     }
-    public Deck getDeck() { return deck; }
     public Card takeRandomDrawPileCard() { return deck.takeRandomCard(); }
     public Card getTopDiscardCard() { return deck.getTopDiscardCard(); }
     public boolean topDrawPileCardIsRevealed() { return deck.topDrawPileCardIsRevealed(); }
