@@ -52,9 +52,6 @@ public class GameController {
         if (isGameOver()) {
             return;
         }
-        if (game.topDrawPileCardIsRevealed()) {
-            return;
-        }
         application.unhighlightDiscardPile();
         application.highlightDrawPile();
         game.revealTopDrawPileCard();
