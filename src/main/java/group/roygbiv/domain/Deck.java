@@ -54,6 +54,8 @@ public class Deck {
         return discardPile.getLast();
     }
 
+    public void addCardToDiscardPile(Card c) { discardPile.add(c); }
+
     public void replaceTopDiscardCard(Card c) {
         discardPile.removeLast();
         discardPile.add(c);
