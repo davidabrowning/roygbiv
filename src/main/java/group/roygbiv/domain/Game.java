@@ -43,10 +43,6 @@ public class Game {
         players.add(new Player("Player 2"));
     }
 
-    public int numPlayers() {
-        return players.size();
-    }
-
     public List<Player> getPlayers() {
         return players;
     }
