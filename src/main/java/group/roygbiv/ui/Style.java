@@ -28,4 +28,10 @@ public class Style {
         b.setMinWidth(Style.CARD_WIDTH);
     }
 
+    public static void formatButton(Button b, Card c) {
+        formatButton(b);
+        b.setBackground(Style.getBackground(c.getColor()));
+        b.setTextFill(c.getTextColor());
+    }
+
 }
