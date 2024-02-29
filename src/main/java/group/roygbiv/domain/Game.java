@@ -92,6 +92,7 @@ public class Game {
     public Card takeRandomDrawPileCard() { return deck.takeRandomCard(); }
     public Card getTopDiscardCard() { return deck.getTopDiscardCard(); }
     public boolean topDrawPileCardIsRevealed() { return deck.topDrawPileCardIsRevealed(); }
+    public void addCardToDiscardPile(Card c) { deck.addCardToDiscardPile(c); }
 
     public void checkForVictory(Player p) {
         if (p.getHand().isInConsecutiveOrder()) {
