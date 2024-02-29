@@ -195,6 +195,7 @@ public class RoygbivApplication extends Application {
         b.setBackground(Style.getBackground(c.getColor()));
         b.setTextFill(c.getTextColor());
     }
+
     public void updateCurrentTurnLabel() {
         if (gameController.isGameOver()) {
             currentTurnLabel.setText("Game over!");
