@@ -155,9 +155,6 @@ public class GameController {
     public List<Player> getPlayers() {
         return game.getPlayers();
     }
-    public Player getPlayer(int playerNum) {
-        return game.getPlayer(playerNum);
-    }
     public Player getCurrentTurnPlayer() { return game.getCurrentTurnPlayer(); }
     public Card getTopDiscardCard() { return game.getTopDiscardCard(); }
     public int getPlayerNum(Player p) { return game.getPlayerNum(p); }
