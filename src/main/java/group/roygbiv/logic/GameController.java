@@ -56,7 +56,7 @@ public class GameController {
         application.highlightDrawPile();
         game.revealTopDrawPileCard();
         desiredCard = game.takeRandomDrawPileCard();
-        application.updateDrawPileButton(desiredCard);
+        application.revealDrawPileButton(desiredCard);
     }
 
     public void handleDiscardPileHover(Button b) {
