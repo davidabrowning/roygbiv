@@ -1,7 +1,5 @@
 package group.roygbiv.domain;
 
-import group.roygbiv.domain.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
