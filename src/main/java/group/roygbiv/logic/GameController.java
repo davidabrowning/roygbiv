@@ -134,7 +134,7 @@ public class GameController {
         application.unhighlightDrawPile();
         application.unhighlightDiscardPile();
         application.unhighlightButton(b);
-        application.updateDrawPileButton();
+        application.resetDrawPileButton();
         application.updateDiscardPileButton();
         application.updateHandCardButtonText(b);
         application.updateCurrentTurnLabel();
