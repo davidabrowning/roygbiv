@@ -123,6 +123,7 @@ public class GameController {
         if (game.topDrawPileCardIsRevealed()) {
             buttonCardMap.replace(b, clickedCard, desiredCard);
             game.swapCards(p, clickedCard, desiredCard);
+            game.addCardToDiscardPile(clickedCard);
             game.playerTookTopDrawPileCard();
         } else {
             Card topDiscardCard = game.getTopDiscardCard();
