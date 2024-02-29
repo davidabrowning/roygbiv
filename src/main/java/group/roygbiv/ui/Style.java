@@ -21,4 +21,11 @@ public class Style {
         return new Background(bf);
     }
 
+    public static void formatButton(Button b) {
+        b.setTextFill(Color.BLACK);
+        b.setBorder(Style.unhighlightedBorder);
+        b.setMinHeight(Style.CARD_HEIGHT);
+        b.setMinWidth(Style.CARD_WIDTH);
+    }
+
 }
