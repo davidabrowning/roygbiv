@@ -180,8 +180,6 @@ public class RoygbivApplication extends Application {
         drawPileButton.setTextFill(Color.BLACK);
     }
 
-    public void highlightDiscardPile() { discardPileButton.setBorder(Style.highlightedBorder); }
-    public void unhighlightDiscardPile() { discardPileButton.setBorder(Style.unhighlightedBorder); }
     public void updateDiscardPileButton() {
         Card c = gameController.getTopDiscardCard();
         discardPileButton.setText(c.toString());
