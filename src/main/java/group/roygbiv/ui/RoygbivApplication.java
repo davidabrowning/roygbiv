@@ -84,11 +84,8 @@ public class RoygbivApplication extends Application {
 
     private void buildDrawPileButton() {
         drawPileButton = new Button("Draw card");
+        Style.formatButton(drawPileButton);
         drawPileButton.setBackground(Style.getBackground(Color.LIGHTGRAY));
-        drawPileButton.setTextFill(Color.BLACK);
-        drawPileButton.setBorder(Style.unhighlightedBorder);
-        drawPileButton.setMinHeight(Style.CARD_HEIGHT);
-        drawPileButton.setMinWidth(Style.CARD_WIDTH);
         drawPileButton.setOnMouseEntered(event -> gameController.handleDrawPileHover(drawPileButton));
         drawPileButton.setOnMouseExited(event -> gameController.handleDrawPileMouseExit(drawPileButton));
         drawPileButton.setOnAction(event -> gameController.handleDrawPileClick());
@@ -97,11 +94,7 @@ public class RoygbivApplication extends Application {
     private void buildDiscardPileButton() {
         Card c = gameController.getTopDiscardCard();
         discardPileButton = new Button(c.toString());
-        discardPileButton.setMinHeight(Style.CARD_HEIGHT);
-        discardPileButton.setMinWidth(Style.CARD_WIDTH);
-        discardPileButton.setBackground(Style.getBackground(c.getColor()));
-        discardPileButton.setTextFill(c.getTextColor());
-        discardPileButton.setBorder(Style.unhighlightedBorder);
+        Style.formatButton(discardPileButton, c);
         discardPileButton.setOnMouseEntered(event -> gameController.handleDiscardPileHover(discardPileButton));
         discardPileButton.setOnMouseExited(event -> gameController.handleDiscardPileMouseExit(discardPileButton));
         discardPileButton.setOnAction(event -> gameController.handleDiscardPileClick());
@@ -151,11 +144,7 @@ public class RoygbivApplication extends Application {
         for (Card c : p.getHand().getCards()) {
             int playerNum = gameController.getPlayerNum(p);
             Button b = new Button(c.toString());
-            b.setBorder(Style.unhighlightedBorder);
-            b.setBackground(Style.getBackground(c.getColor()));
-            b.setTextFill(c.getTextColor());
-            b.setMinWidth(Style.CARD_WIDTH);
-            b.setMinHeight(Style.CARD_HEIGHT);
+            Style.formatButton(b, c);
             b.setOnAction(event -> gameController.handleHandClick(p, b));
             b.setOnMouseEntered(event -> gameController.handleHandHover(p, b));
             b.setOnMouseExited(event -> gameController.handleMouseExit(p, b));
@@ -177,11 +166,12 @@ public class RoygbivApplication extends Application {
     public void unhighlightDrawPile() { drawPileButton.setBorder(Style.unhighlightedBorder); }
     public void updateDrawPileButton(Card topCard) {
         drawPileButton.setText(topCard.toString());
-        drawPileButton.setBackground(Style.getBackground(topCard.getColor()));
-        drawPileButton.setTextFill(topCard.getTextColor());
+        Style.formatButton(drawPileButton, topCard);
+        highlightButton(drawPileButton);
     }
     public void updateDrawPileButton() {
         drawPileButton.setText("Draw card");
+        Style.formatButton(drawPileButton);
         drawPileButton.setBackground(Style.getBackground(Color.LIGHTGRAY));
         drawPileButton.setTextFill(Color.BLACK);
     }
