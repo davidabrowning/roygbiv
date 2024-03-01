@@ -12,6 +12,7 @@ public class Card {
 
     // ----------------------------------------------------------------------------------------------------------------
 
+    // This method returns the Card's integer value
     public int getValue() { return value; }
 
     @Override
@@ -21,6 +22,25 @@ public class Card {
 
     // ----------------------------------------------------------------------------------------------------------------
 
+    // This method returns the appropriate text color
+    // for the Card's face
+    public Color getTextColor() {
+        // Deep reds are dark to need white text
+        if (value < 5) {
+            return Color.WHITE;
+        }
+
+        // Oranges, yellows, and greens are light and need black text
+        if (value < 40) {
+            return Color.BLACK;
+        }
+
+        // Blues and violets are dark and need white text
+        return Color.WHITE;
+    }
+
+    // This method returns the appropriate background color
+    // for the Card's face
     public Color getColor() {
 
         /*
