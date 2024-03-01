@@ -94,5 +94,8 @@ public class Game {
         }
     }
 
-
+    public void switchCards(Player p, Card c1, Card c2) {
+        p.getHand().switchCards(c1, c2);
+        advanceTurn();
+    }
 }
