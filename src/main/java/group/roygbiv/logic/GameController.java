@@ -38,6 +38,9 @@ public class GameController {
         if (isGameOver()) {
             return;
         }
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
+            return;
+        }
         application.highlightButton(b);
     }
 
@@ -52,6 +55,9 @@ public class GameController {
         if (isGameOver()) {
             return;
         }
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
+            return;
+        }
         application.unhighlightDiscardPile();
         application.highlightDrawPile();
         game.revealTopDrawPileCard();
@@ -64,6 +70,9 @@ public class GameController {
             return;
         }
         if (game.topDrawPileCardIsRevealed()) {
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
+            return;
+        }
             return;
         }
         application.highlightButton(b);
@@ -80,6 +89,9 @@ public class GameController {
             return;
         }
         if (game.topDrawPileCardIsRevealed()) {
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
+            return;
+        }
             return;
         }
         application.highlightDiscardPile();
@@ -93,7 +105,7 @@ public class GameController {
         if (!game.isCurrentTurn(p)) {
             return;
         }
-        if (desiredCard == null) {
+        if (desiredCard == null && game.allPlayersHaveCompletedInitialCardSwitch()) {
             return;
         }
         application.highlightButton(b);
@@ -113,6 +125,45 @@ public class GameController {
         if (!game.isCurrentTurn(p)) {
             return;
         }
+
+        Card clickedCard = buttonCardMap.get(b);
+
+        // If not all players have completed their initial card switch
+        // Then set this card as the first card for the switch
+        // or complete the switch
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
+            if (clickedCard == desiredCard) {
+                desiredCard = null;
+                application.unhighlightButton(b);
+                return;
+            }
+            if (desiredCard == null) {
+                desiredCard = clickedCard;
+                application.highlightButton(b);
+            } else {
+                game.switchCards(p, desiredCard, clickedCard);
+
+                Button previousButton = null;
+                for (Button buttonKey : buttonCardMap.keySet()) {
+                    if (buttonCardMap.get(buttonKey) == desiredCard) {
+                        previousButton = buttonKey;
+                    }
+                }
+                assert previousButton != null;
+
+                buttonCardMap.replace(b, desiredCard);
+                buttonCardMap.replace(previousButton, clickedCard);
+                desiredCard = null;
+
+                application.unhighlightButton(b);
+                application.updateHandCardButtonText(b);
+                application.unhighlightButton(previousButton);
+                application.updateHandCardButtonText(previousButton);
+                application.updateCurrentTurnLabel();
+            }
+            return;
+        }
+
         if (desiredCard == null) {
             return;
         }
@@ -158,6 +209,7 @@ public class GameController {
     public Player getCurrentTurnPlayer() { return game.getCurrentTurnPlayer(); }
     public Card getTopDiscardCard() { return game.getTopDiscardCard(); }
     public int getPlayerNum(Player p) { return game.getPlayerNum(p); }
+    public boolean allPlayersHaveCompletedInitialCardSwitch() { return game.allPlayersHaveCompletedInitialCardSwitch(); }
     public boolean isGameOver() { return game.isGameOver(); }
 
 }
