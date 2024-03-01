@@ -51,13 +51,7 @@ public class Game {
         return -1;
     }
 
-    public Player getPlayer(int playerNum) {
-        if (players.isEmpty()) {
-            return null;
-        }
-        return players.get(playerNum);
-    }
-
+    // This method deals Cards to the Players at the beginning of a game
     public void dealCards() {
         for (Player p : players) {
             Hand h = p.getHand();
