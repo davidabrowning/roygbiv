@@ -32,6 +32,15 @@ public class GameController {
     public void mapButtonToCard(Button b, Card c) {
         buttonCardMap.put(b, c);
     }
+    public Card getMappedHandCard(Button b) { return buttonCardMap.get(b); }
+    public List<Player> getPlayers() {
+        return game.getPlayers();
+    }
+    public Player getCurrentTurnPlayer() { return game.getCurrentTurnPlayer(); }
+    public Card getTopDiscardCard() { return game.getTopDiscardCard(); }
+    public int getPlayerNum(Player p) { return game.getPlayerNum(p); }
+    public boolean allPlayersHaveCompletedInitialCardSwitch() { return game.allPlayersHaveCompletedInitialCardSwitch(); }
+    public boolean isGameOver() { return game.isGameOver(); }
 
     // This method handles user hovering over a Button
     public void handleDrawPileHover(Button b) {
@@ -234,15 +243,5 @@ public class GameController {
             application.updateCurrentTurnLabel();
         }
     }
-
-    public Card getMappedHandCard(Button b) { return buttonCardMap.get(b); }
-    public List<Player> getPlayers() {
-        return game.getPlayers();
-    }
-    public Player getCurrentTurnPlayer() { return game.getCurrentTurnPlayer(); }
-    public Card getTopDiscardCard() { return game.getTopDiscardCard(); }
-    public int getPlayerNum(Player p) { return game.getPlayerNum(p); }
-    public boolean allPlayersHaveCompletedInitialCardSwitch() { return game.allPlayersHaveCompletedInitialCardSwitch(); }
-    public boolean isGameOver() { return game.isGameOver(); }
 
 }
