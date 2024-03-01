@@ -185,14 +185,14 @@ public class RoygbivApplication extends Application {
     public void updateDiscardPileButton() {
         Card c = gameController.getTopDiscardCard();
         discardPileButton.setText(c.toString());
-        discardPileButton.setBackground(Style.getBackground(c.getColor()));
+        discardPileButton.setBackground(Style.getBackground(c.getBackgroundColor()));
         discardPileButton.setTextFill(c.getTextColor());
     }
 
     public void updateHandCardButtonText(Button b) {
         Card c = gameController.getMappedHandCard(b);
         b.setText(c.toString());
-        b.setBackground(Style.getBackground(c.getColor()));
+        b.setBackground(Style.getBackground(c.getBackgroundColor()));
         b.setTextFill(c.getTextColor());
     }
 
