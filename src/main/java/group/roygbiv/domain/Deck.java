@@ -36,6 +36,9 @@ public class Deck {
     }
     // ---------------------------------------------------------------------------------------------------------------
     // Getters, setters, and toString
+    public boolean hasCardBeenDrawn() { return drawnCard != null; }
+    public int drawPileSize() { return drawPile.size(); }
+    public int discardPileSize() { return discardPile.size(); }
 
     // ---------------------------------------------------------------------------------------------------------------
 
@@ -82,9 +85,6 @@ public class Deck {
         discardPile.add(c);
     }
 
-    public void revealTopDrawPileCard() { topDrawPileCardIsRevealed = true; }
-    public void unrevealTopDrawPileCard() { topDrawPileCardIsRevealed = false; }
-
-    public boolean topDrawPileCardIsRevealed() { return topDrawPileCardIsRevealed; }
-
+    // This method adds a Card to the discardPile
+    public void discard(Card c) { discardPile.add(c); }
 }
