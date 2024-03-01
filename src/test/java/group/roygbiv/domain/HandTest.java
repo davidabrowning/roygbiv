@@ -45,4 +45,40 @@ class HandTest {
         }
         assertEquals(Hand.MAX_CARDS, emptyHand.getCards().size());
     }
+
+    @Test
+    void replaceCardDoesNotChangeHandSize() {
+        int startingHandSize = fullHand.getCards().size();
+        Card cardToRemove = fullHand.getCards().get(3);
+        Card cardToAdd = new Card(45);
+        fullHand.replaceCard(cardToRemove, cardToAdd);
+        int endingHandSize = fullHand.getCards().size();
+        assertEquals(startingHandSize, endingHandSize);
+    }
+
+    @Test
+    void replaceCardPutsNewCardAtIntendedLocation() {
+        Card cardToRemove = fullHand.getCards().get(4);
+        Card cardToAdd = new Card(36);
+        fullHand.replaceCard(cardToRemove, cardToAdd);
+        assertEquals(cardToAdd, fullHand.getCards().get(4));
+    }
+
+    @Test
+    void isInConsecutiveOrderTrueWhenCardsSorted() {
+        emptyHand.addCard(new Card(1));
+        emptyHand.addCard(new Card(2));
+        emptyHand.addCard(new Card(3));
+        emptyHand.addCard(new Card(4));
+        assertTrue(emptyHand.isInConsecutiveOrder());
+    }
+
+    @Test
+    void isInConsecutiveOrderFalseWhenCardsNotSorted() {
+        emptyHand.addCard(new Card(1));
+        emptyHand.addCard(new Card(3));
+        emptyHand.addCard(new Card(2));
+        emptyHand.addCard(new Card(4));
+        assertFalse(emptyHand.isInConsecutiveOrder());
+    }
 }
