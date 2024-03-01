@@ -128,6 +128,7 @@ public class RoygbivApplication extends Application {
 
     private void buildPlayerLayoutComponents(Player player) {
         Label playerName = new Label(player.toString());
+        playerName.setFont(Style.DEFAULT_FONT);
         playerNameLabelList.add(playerName);
 
         HBox handLayout = new HBox();
