@@ -62,8 +62,10 @@ public class Game {
         }
     }
 
-    public void playerTookTopDrawPileCard() {
-        deck.unrevealTopDrawPileCard();
+    public void takeDrawnCard(Player p, Card cardToRemove) {
+        Card drawnCard = deck.takeDrawnCard();
+        p.getHand().replaceCard(cardToRemove, drawnCard);
+        discard(cardToRemove);
         advanceTurn();
     }
 
