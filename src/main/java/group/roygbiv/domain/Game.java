@@ -36,8 +36,7 @@ public class Game {
 
     public boolean isGameOver() { return isGameOver; }
 
-    public void initializeDeckAndPlayers() {
-        deck.reset();
+    public void initializePlayers() {
         players.clear();
         players.add(new Player("Player 1"));
         players.add(new Player("Player 2"));
