@@ -32,14 +32,13 @@ public class Deck {
 
     // ---------------------------------------------------------------------------------------------------------------
 
-    public Card takeRandomCard() {
     // This method gets a Card from the drawPile without removing it
     // and sets the drawnCard variable to its value
+    public Card drawCard() {
         Random rand = new Random();
         int randomCardNum = rand.nextInt(0, drawPile.size());
-        Card randomCard = drawPile.get(randomCardNum);
-        drawPile.remove(randomCard);
-        return randomCard;
+        drawnCard = drawPile.get(randomCardNum);
+        return drawnCard;
     }
 
     // This method removes the drawnCard from the drawPile
