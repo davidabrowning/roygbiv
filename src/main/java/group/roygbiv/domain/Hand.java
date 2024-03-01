@@ -39,6 +39,9 @@ public class Hand {
     // This method takes in two parameters, replacing cardToRemove
     // with cardToAdd in this Hand
     public void replaceCard(Card cardToRemove, Card cardToAdd) {
+        if (!cards.contains(cardToRemove)) {
+            return;
+        }
         int location = cards.indexOf(cardToRemove);
         cards.remove(cardToRemove);
         cards.add(location, cardToAdd);
