@@ -149,7 +149,7 @@ public class RoygbivApplication extends Application {
             Style.formatButton(b, c);
             b.setOnAction(event -> gameController.handleHandClick(p, b));
             b.setOnMouseEntered(event -> gameController.handleHandHover(p, b));
-            b.setOnMouseExited(event -> gameController.handleMouseExit(p, b));
+            b.setOnMouseExited(event -> gameController.handleHandMouseExit(p, b));
             playerHandLayoutList.get(playerNum).getChildren().add(b);
             gameController.mapButtonToCard(b, c);
         }
