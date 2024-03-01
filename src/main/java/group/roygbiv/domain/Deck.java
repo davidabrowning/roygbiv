@@ -12,7 +12,7 @@ public class Deck {
     private final int DECK_SIZE = 60;
 
     public Deck() {
-        this.topDrawPileCardIsRevealed = false;
+        // Initialize drawPile
         this.drawPile = new ArrayList<>();
         this.discardPile = new ArrayList<>();
         this.reset();
@@ -24,22 +24,24 @@ public class Deck {
         for (int i = 0; i < DECK_SIZE; i++) {
             drawPile.add(new Card(i));
         }
-    }
 
     public void initializeDiscardPile() {
         Card c = takeRandomCard();
         discardPile.add(c);
+        // Initialize discardPile
     }
 
     public int drawPileSize() {
         return drawPile.size();
     }
+    // ---------------------------------------------------------------------------------------------------------------
+    // Getters, setters, and toString
 
-    public int discardPileSize() {
-        return discardPile.size();
-    }
+    // ---------------------------------------------------------------------------------------------------------------
 
     public Card takeRandomCard() {
+    // This method gets a Card from the drawPile without removing it
+    // and sets the drawnCard variable to its value
         Random rand = new Random();
         int randomCardNum = rand.nextInt(0, drawPile.size());
         Card randomCard = drawPile.get(randomCardNum);
