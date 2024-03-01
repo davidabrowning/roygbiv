@@ -66,10 +66,10 @@ public class Game {
         advanceTurn();
     }
 
-    public void swapForTopDiscardCard(Player p, Card c) {
-        Card currentDiscardCard = deck.getTopDiscardCard();
-        p.getHand().replaceCard(c, currentDiscardCard);
-        deck.replaceTopDiscardCard(c);
+    public void takeDiscardedCard(Player p, Card cardToRemove) {
+        Card discardedCard = deck.takeDiscardCard();
+        p.getHand().replaceCard(cardToRemove, discardedCard);
+        discard(cardToRemove);
         advanceTurn();
     }
 
