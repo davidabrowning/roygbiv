@@ -44,7 +44,7 @@ public class GameController {
     }
 
     public void handleDrawPileMouseExit(Button b) {
-        if (game.topDrawPileCardIsRevealed()) {
+        if (game.hasCardBeenDrawn()) {
             return;
         }
         application.unhighlightButton(b);
@@ -59,8 +59,7 @@ public class GameController {
         }
         application.unhighlightDiscardPile();
         application.highlightDrawPile();
-        game.revealTopDrawPileCard();
-        desiredCard = game.takeRandomDrawPileCard();
+        desiredCard = game.drawCard();
         application.revealDrawPileButton(desiredCard);
     }
 
