@@ -41,7 +41,7 @@ public class Card {
 
     // This method returns the appropriate background color
     // for the Card's face
-    public Color getColor() {
+    public Color getBackgroundColor() {
 
         /*
         0 RED = 255, 0, 0
