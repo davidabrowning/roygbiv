@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Hand {
 
+    private boolean hasCompletedInitialCardSwitch;
     private final List<Card> cards;
     public static final int MAX_CARDS = 10;
 
@@ -43,6 +44,16 @@ public class Hand {
         return true;
     }
 
-
-
+    public void switchCards(Card c1, Card c2) {
+        if (!cards.contains(c1) || !cards.contains(c2)) {
+            return;
+        }
+        int index1 = cards.indexOf(c1);
+        int index2 = cards.indexOf(c2);
+        cards.remove(index1);
+        cards.add(index1, c2);
+        cards.remove(index2);
+        cards.add(index2, c1);
+        hasCompletedInitialCardSwitch = true;
+    }
 }
