@@ -24,8 +24,6 @@ public class Game {
         }
     }
 
-    public void revealTopDrawPileCard() { deck.revealTopDrawPileCard(); }
-
     public Player getCurrentTurnPlayer() {
         return players.get(turnCounter);
     }
