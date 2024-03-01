@@ -15,13 +15,13 @@ class DeckTest {
     }
 
     @Test
-    void drawPileIsInitiallySixty() {
-        assertEquals(60, deck.drawPileSize());
+    void drawPileIsInitiallyFiftyNine() {
+        assertEquals(59, deck.drawPileSize());
     }
 
     @Test
-    void discardPileIsInitiallySixty() {
-        assertEquals(0, deck.discardPileSize());
+    void discardPileIsInitiallyOne() {
+        assertEquals(1, deck.discardPileSize());
     }
 
 }
