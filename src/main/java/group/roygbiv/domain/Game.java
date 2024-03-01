@@ -56,7 +56,8 @@ public class Game {
         for (Player p : players) {
             Hand h = p.getHand();
             while (!h.isFull()) {
-                h.addCard(deck.takeRandomCard());
+                deck.drawCard();
+                h.addCard(deck.takeDrawnCard());
             }
         }
     }
