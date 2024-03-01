@@ -3,6 +3,7 @@ package group.roygbiv.ui;
 import group.roygbiv.logic.GameController;
 import group.roygbiv.domain.*;
 
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -122,6 +125,18 @@ public class RoygbivApplication extends Application {
         playerLayout.getChildren().add(playerHandLayoutList.getLast());
         playerLayout.getChildren().add(playerVictoryButtonList.getLast());
 
+        try {
+            Image image = new Image(new FileInputStream("src/main/resources/group/roygbiv/nedry.gif"));
+            ImageView imageView = new ImageView();
+            imageView.setFitHeight(Style.CARD_HEIGHT);
+            imageView.setFitWidth(Style.CARD_WIDTH);
+            imageView.setImage(image);
+            imageView.setVisible(false);
+            playerLayout.getChildren().add(imageView);
+        } catch (Exception e) {
+            System.out.println("Unable to load image.");
+        }
+
         handsLayout.getChildren().add(playerLayout);
         playerLayoutList.add(playerLayout);
     }
@@ -140,6 +155,8 @@ public class RoygbivApplication extends Application {
         Button claimVictoryButton = new Button("ROY G. BIV!");
         claimVictoryButton.setOnAction(event -> gameController.handleVictoryButtonClick(player));
         playerVictoryButtonList.add(claimVictoryButton);
+
+
     }
 
     private void buildHandCardButtons(Player p) {
@@ -204,5 +221,14 @@ public class RoygbivApplication extends Application {
         } else {
             currentTurnLabel.setText("Current turn: " + gameController.getCurrentTurnPlayer());
         }
+    }
+
+    public void showFalseVictory(int playerNum) {
+        if (playerLayoutList.get(playerNum).getChildren().getLast().isVisible()) {
+            playerLayoutList.get(playerNum).getChildren().getLast().setVisible(false);
+        } else {
+            playerLayoutList.get(playerNum).getChildren().getLast().setVisible(true);
+        }
+
     }
 }
