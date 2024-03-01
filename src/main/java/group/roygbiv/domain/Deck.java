@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Deck {
 
-    private boolean topDrawPileCardIsRevealed;
     private final List<Card> drawPile;
+    private Card drawnCard;
     private final List<Card> discardPile;
     private final int DECK_SIZE = 60;
 
@@ -65,6 +65,7 @@ public class Deck {
         return c;
     }
 
+    // This method gets the Card at the top of the discardPile without removing it
     public Card getTopDiscardCard() {
         if (discardPile.isEmpty()) {
             return null;
