@@ -9,10 +9,17 @@ public class Hand {
     private final List<Card> cards;
     public static final int MAX_CARDS = 10;
 
+    // Constructor
     public Hand() {
         this.cards = new ArrayList<>();
     }
 
+    // ----------------------------------------------------------------------------------------------------------------
+    // Getters, setters, and toString
+
+    // ----------------------------------------------------------------------------------------------------------------
+
+    // This method checks if the Hand is already full
     public boolean isFull() {
         return cards.size() == MAX_CARDS;
     }
@@ -23,16 +30,15 @@ public class Hand {
         }
     }
 
-    public List<Card> getCards() {
-        return cards;
-    }
-
+    // This method takes in two parameters, replacing cardToRemove
+    // with cardToAdd in this Hand
     public void replaceCard(Card cardToRemove, Card cardToAdd) {
         int location = cards.indexOf(cardToRemove);
         cards.remove(cardToRemove);
         cards.add(location, cardToAdd);
     }
 
+    // This method checks if all Cards in this Hand are sorted ascending
     public boolean isInConsecutiveOrder() {
         int previousCardValue = cards.getFirst().getValue();
         for (Card c : cards) {
