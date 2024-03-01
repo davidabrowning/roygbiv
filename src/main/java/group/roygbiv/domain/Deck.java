@@ -14,21 +14,14 @@ public class Deck {
     public Deck() {
         // Initialize drawPile
         this.drawPile = new ArrayList<>();
-        this.discardPile = new ArrayList<>();
-        this.reset();
-    }
-
-    public void reset() {
-        drawPile.clear();
-        discardPile.clear();
         for (int i = 0; i < DECK_SIZE; i++) {
             drawPile.add(new Card(i));
         }
 
-    public void initializeDiscardPile() {
-        Card c = takeRandomCard();
-        discardPile.add(c);
         // Initialize discardPile
+        this.discardPile = new ArrayList<>();
+        drawCard();
+        discard(takeDrawnCard());
     }
 
     public int drawPileSize() {
