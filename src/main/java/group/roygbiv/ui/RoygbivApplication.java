@@ -69,7 +69,8 @@ public class RoygbivApplication extends Application {
     }
 
     private void buildCurrentTurnLabel() {
-        currentTurnLabel = new Label("Current turn: " + gameController.getCurrentTurnPlayer());
+        currentTurnLabel = new Label(gameController.getCurrentTurnPlayer() + ", please swap two cards in your hand:");
+        currentTurnLabel.setFont(Style.DEFAULT_FONT);
     }
 
     private void buildCommunalCardLayout() {
@@ -197,7 +198,10 @@ public class RoygbivApplication extends Application {
     public void updateCurrentTurnLabel() {
         if (gameController.isGameOver()) {
             currentTurnLabel.setText("Game over!");
-        } else
+        } else if (!gameController.allPlayersHaveCompletedInitialCardSwitch()) {
+            currentTurnLabel.setText(gameController.getCurrentTurnPlayer() + ", please swap two cards in your hand:");
+        } else {
             currentTurnLabel.setText("Current turn: " + gameController.getCurrentTurnPlayer());
+        }
     }
 }
