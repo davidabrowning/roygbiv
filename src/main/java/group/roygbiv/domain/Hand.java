@@ -29,6 +29,7 @@ public class Hand {
         return cards.size() == MAX_CARDS;
     }
 
+    // This method adds a new Card to the Hand
     public void addCard(Card c) {
         if (cards.size() < MAX_CARDS) {
             cards.add(c);
