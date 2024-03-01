@@ -147,14 +147,4 @@ public class Card {
         return Color.rgb(red, green, blue);
     }
 
-    public Color getTextColor() {
-        if (value < 5) {
-            return Color.WHITE;
-        }
-        if (value < 40) {
-            return Color.BLACK;
-        }
-        return Color.WHITE;
-    }
-
 }
