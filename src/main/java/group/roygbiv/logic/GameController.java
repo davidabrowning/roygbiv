@@ -113,6 +113,9 @@ public class GameController {
         if (isGameOver()) {
             return;
         }
+        if (buttonCardMap.get(b) == desiredCard) {
+            return;
+        }
         application.unhighlightButton(b);
     }
 
