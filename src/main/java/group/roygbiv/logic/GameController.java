@@ -24,9 +24,8 @@ public class GameController {
     }
 
     public void start() {
-        game.initializeDeckAndPlayers();
+        game.initializePlayers();
         game.dealCards();
-        game.initializeDiscardPile();
         application.buildGUI();
     }
 
@@ -69,10 +68,10 @@ public class GameController {
         if (isGameOver()) {
             return;
         }
-        if (game.topDrawPileCardIsRevealed()) {
         if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
             return;
         }
+        if (game.hasCardBeenDrawn()) {
             return;
         }
         application.highlightButton(b);
@@ -88,10 +87,10 @@ public class GameController {
         if (isGameOver()) {
             return;
         }
-        if (game.topDrawPileCardIsRevealed()) {
         if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
             return;
         }
+        if (game.hasCardBeenDrawn()) {
             return;
         }
         application.highlightDiscardPile();
