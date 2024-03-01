@@ -18,6 +18,7 @@ public class Card {
     public String toString() {
         return "#" + value;
     }
+
     // ----------------------------------------------------------------------------------------------------------------
 
     public Color getColor() {
