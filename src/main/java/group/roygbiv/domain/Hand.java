@@ -11,11 +11,16 @@ public class Hand {
 
     // Constructor
     public Hand() {
+        hasCompletedInitialCardSwitch = false;
         this.cards = new ArrayList<>();
     }
 
     // ----------------------------------------------------------------------------------------------------------------
     // Getters, setters, and toString
+    public boolean hasCompletedInitialCardSwitch() { return hasCompletedInitialCardSwitch; }
+    public List<Card> getCards() {
+        return cards;
+    }
 
     // ----------------------------------------------------------------------------------------------------------------
 
