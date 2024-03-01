@@ -24,9 +24,6 @@ public class Deck {
         discard(takeDrawnCard());
     }
 
-    public int drawPileSize() {
-        return drawPile.size();
-    }
     // ---------------------------------------------------------------------------------------------------------------
     // Getters, setters, and toString
     public boolean hasCardBeenDrawn() { return drawnCard != null; }
