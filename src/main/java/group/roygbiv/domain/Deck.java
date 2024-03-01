@@ -72,6 +72,10 @@ public class Deck {
     public void replaceTopDiscardCard(Card c) {
         discardPile.removeLast();
         discardPile.add(c);
+    public Card takeDiscardCard() {
+        Card c = discardPile.getLast();
+        discardPile.remove(c);
+        return c;
     }
 
     // This method adds a Card to the discardPile
