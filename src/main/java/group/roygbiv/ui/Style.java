@@ -6,8 +6,11 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.*;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class Style {
+
+    public static Font DEFAULT_FONT = new Font("Arial", 18);
 
     public static int CARD_HEIGHT = 120;
     public static int CARD_WIDTH = 100;
