@@ -76,17 +76,19 @@ public class Game {
         advanceTurn();
     }
 
-    public void swapCards(Player p, Card cardToRemove, Card cardToTake) {
-        p.getHand().replaceCard(cardToRemove, cardToTake);
-    }
-
-    public void initializeDiscardPile() {
-        deck.initializeDiscardPile();
-    }
-    public Card takeRandomDrawPileCard() { return deck.takeRandomCard(); }
+    public Card drawCard() { return deck.drawCard(); }
     public Card getTopDiscardCard() { return deck.getTopDiscardCard(); }
-    public boolean topDrawPileCardIsRevealed() { return deck.topDrawPileCardIsRevealed(); }
-    public void addCardToDiscardPile(Card c) { deck.addCardToDiscardPile(c); }
+    public boolean hasCardBeenDrawn() { return deck.hasCardBeenDrawn(); }
+    public void discard(Card c) { deck.discard(c); }
+
+    public boolean allPlayersHaveCompletedInitialCardSwitch() {
+        for (Player p : players) {
+            if (!p.getHand().hasCompletedInitialCardSwitch()) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public void checkForVictory(Player p) {
         if (p.getHand().isInConsecutiveOrder()) {
