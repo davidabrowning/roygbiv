@@ -33,99 +33,127 @@ public class GameController {
         buttonCardMap.put(b, c);
     }
 
+    // This method handles user hovering over a Button
     public void handleDrawPileHover(Button b) {
-        if (isGameOver()) {
-            return;
-        }
-        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
-            return;
-        }
+
+        // Exit criteria:
+        // Game over
+        // Some players still need to do initial two-card switch
+        if (isGameOver()) { return; }
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) { return; }
+
+        // Highlight Button
         application.highlightButton(b);
     }
 
+    // This method handles user ending hovering over a button
     public void handleDrawPileMouseExit(Button b) {
-        if (game.hasCardBeenDrawn()) {
-            return;
-        }
+
+        // Exit criteria:
+        // The drawPile card has already been drawn and therefore the Player is committed to taking it
+        if (game.hasCardBeenDrawn()) { return; }
+
+        // Unhighlight Button
         application.unhighlightButton(b);
     }
 
+    // This method handles user clicking on the drawPile
     public void handleDrawPileClick() {
-        if (isGameOver()) {
-            return;
-        }
-        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
-            return;
-        }
+
+        // Exit criteria:
+        // Game over
+        // Some players still need to do initial two-card switch
+        if (isGameOver()) { return; }
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) { return; }
+
+        // Transfer highlighting from discardPile to drawPile
+        // Set the desiredCard to the drawn card
+        // Show the drawnCard
         application.unhighlightDiscardPile();
         application.highlightDrawPile();
         desiredCard = game.drawCard();
         application.revealDrawPileButton(desiredCard);
     }
 
+    // This method handles user hovering over the discardPile
     public void handleDiscardPileHover(Button b) {
-        if (isGameOver()) {
-            return;
-        }
-        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
-            return;
-        }
-        if (game.hasCardBeenDrawn()) {
-            return;
-        }
+
+        // Exit criteria:
+        // Game over
+        // Some players still need to do initial two-card switch
+        // Player has already drawn a card from drawPile and therefore committed to taking a drawnCard
+        if (isGameOver()) { return; }
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) { return; }
+        if (game.hasCardBeenDrawn()) { return; }
+
+        // Highlight the discardPile Button
         application.highlightButton(b);
     }
 
+    // This method handles the user ending hover over the discardPile
     public void handleDiscardPileMouseExit(Button b) {
+
+        // As long as they haven't clicked on and set the discardPile as the desired card
+        // then unhighlight the discardPile
         if (desiredCard == null) {
             application.unhighlightButton(b);
         }
     }
 
+    // This method handles the user clicking on the discardPile
     public void handleDiscardPileClick() {
-        if (isGameOver()) {
-            return;
-        }
-        if (!game.allPlayersHaveCompletedInitialCardSwitch()) {
-            return;
-        }
-        if (game.hasCardBeenDrawn()) {
-            return;
-        }
+
+        // Exit criteria:
+        // Game is over
+        // Some players still need to do initial two-card switch
+        // Player has already drawn a card from drawPile and therefore committed to taking a drawnCard
+        if (isGameOver()) { return; }
+        if (!game.allPlayersHaveCompletedInitialCardSwitch()) { return; }
+        if (game.hasCardBeenDrawn()) { return; }
+
+        // Highlight the discardPile and set its top card as the desiredCard
         application.highlightDiscardPile();
         desiredCard = getTopDiscardCard();
     }
 
+    // This method handles the user hovering over a Card in their Hand
     public void handleHandHover(Player p, Button b) {
-        if (isGameOver()) {
-            return;
-        }
-        if (!game.isCurrentTurn(p)) {
-            return;
-        }
-        if (desiredCard == null && game.allPlayersHaveCompletedInitialCardSwitch()) {
-            return;
-        }
+
+        // Exit criteria:
+        // Game is over
+        // Not this player's turn
+        // User has not yet chosen a desired draw/discard pile card
+        // (and game has exited the initial two-card switch phase)
+        if (isGameOver()) { return; }
+        if (!game.isCurrentTurn(p)) { return; }
+        if (desiredCard == null && game.allPlayersHaveCompletedInitialCardSwitch()) { return; }
+
+        // Highlight the Card's Button
         application.highlightButton(b);
     }
 
-    public void handleMouseExit(Player p, Button b) {
-        if (isGameOver()) {
-            return;
-        }
-        if (buttonCardMap.get(b) == desiredCard) {
-            return;
-        }
+    // This method handles the user ending the hover over a Card in their Hand
+    public void handleHandMouseExit(Player p, Button b) {
+
+        // Exit criteria:
+        // Game is over
+        // This Card is the desired Card (for the game's initial two-card switch)
+        if (isGameOver()) { return; }
+        if (buttonCardMap.get(b) == desiredCard) { return; }
+
+        // Unhighlight the Card in their hand
         application.unhighlightButton(b);
     }
 
+    // This method handles the user clicking on a Card in their Hand
     public void handleHandClick(Player p, Button b) {
-        if (isGameOver()) {
-            return;
-        }
-        if (!game.isCurrentTurn(p)) {
-            return;
-        }
+
+        // Exit criteria:
+        // Game is over
+        // Not this player's turn
+        if (isGameOver()) { return; }
+        if (!game.isCurrentTurn(p)) { return; }
+
 
         Card clickedCard = buttonCardMap.get(b);
 
@@ -191,11 +219,17 @@ public class GameController {
         this.desiredCard = null;
     }
 
+    // This method handles the user clicking on a "Claim victory" Button
     public void handleVictoryButtonClick(Player p) {
-        if (isGameOver()) {
-            return;
-        }
+
+        // Exit criteria
+        if (isGameOver()) { return; }
+
+        // Check for victory and update victory flag
+        // Note: This is only done on user request; users need to "notice" that they have won
         game.checkForVictory(p);
+
+        // If game is over, update the currentTurnLabel value to say "Game over!"
         if (game.isGameOver()) {
             application.updateCurrentTurnLabel();
         }
