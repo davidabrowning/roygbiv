@@ -166,19 +166,17 @@ public class GameController {
             return;
         }
 
-        Card clickedCard = buttonCardMap.get(b);
+        buttonCardMap.replace(b, clickedCard, desiredCard);
 
-        // If the player is drawing from the draw pile
-        if (game.topDrawPileCardIsRevealed()) {
-            buttonCardMap.replace(b, clickedCard, desiredCard);
-            game.swapCards(p, clickedCard, desiredCard);
-            game.addCardToDiscardPile(clickedCard);
-            game.playerTookTopDrawPileCard();
+        // If the player is drawing from the draw pile, then take the drawn card
+        // Else, then take the discard card
+        if (game.hasCardBeenDrawn()) {
+            game.takeDrawnCard(p, clickedCard);
         } else {
-            Card topDiscardCard = game.getTopDiscardCard();
-            buttonCardMap.replace(b, clickedCard, topDiscardCard);
-            game.swapForTopDiscardCard(p, clickedCard);
+            game.takeDiscardedCard(p, clickedCard);
         }
+
+
 
         application.unhighlightDrawPile();
         application.unhighlightDiscardPile();
