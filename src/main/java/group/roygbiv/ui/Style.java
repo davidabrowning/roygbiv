@@ -35,7 +35,7 @@ public class Style {
 
     public static void formatButton(Button b, Card c) {
         formatButton(b);
-        b.setBackground(Style.getBackground(c.getColor()));
+        b.setBackground(Style.getBackground(c.getBackgroundColor()));
         b.setTextFill(c.getTextColor());
     }
 
