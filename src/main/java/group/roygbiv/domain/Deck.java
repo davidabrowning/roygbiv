@@ -47,6 +47,24 @@ public class Deck {
         return randomCard;
     }
 
+    // This method removes the drawnCard from the drawPile
+    // and resets the drawPile if it is empty
+    public Card takeDrawnCard() {
+        Card c = drawnCard;
+        drawnCard = null;
+        drawPile.remove(c);
+
+        if (drawPile.isEmpty()) {
+            Card lastDiscardedCard = discardPile.getLast();
+            drawPile.addAll(discardPile);
+            discardPile.clear();
+            discardPile.add(lastDiscardedCard);
+            drawPile.remove(lastDiscardedCard);
+        }
+
+        return c;
+    }
+
     public Card getTopDiscardCard() {
         if (discardPile.isEmpty()) {
             return null;
