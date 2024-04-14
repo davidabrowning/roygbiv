@@ -87,7 +87,7 @@ public class RoygbivApplication extends Application {
     }
 
     private void buildDrawPileButton() {
-        drawPileButton = new Button("Draw card");
+        drawPileButton = new Button("Draw card " + gameController.getDrawPileSize());
         Style.formatButton(drawPileButton);
         drawPileButton.setBackground(Style.getBackground(Color.LIGHTGRAY));
         drawPileButton.setOnMouseEntered(event -> gameController.handleDrawPileHover(drawPileButton));
