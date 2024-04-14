@@ -174,6 +174,8 @@ public class RoygbivApplication extends Application {
     private void buildStage() {
         stage.setTitle("Desktop ROY G. BIV Game");
         stage.setScene(mainScene);
+        //stage.setMaximized(true);
+        stage.setFullScreen(true);
         stage.show();
     }
 
