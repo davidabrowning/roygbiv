@@ -155,8 +155,6 @@ public class RoygbivApplication extends Application {
         Button claimVictoryButton = new Button("ROY G. BIV!");
         claimVictoryButton.setOnAction(event -> gameController.handleVictoryButtonClick(player));
         playerVictoryButtonList.add(claimVictoryButton);
-
-
     }
 
     private void buildHandCardButtons(Player p) {
