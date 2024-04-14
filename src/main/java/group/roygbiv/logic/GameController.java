@@ -233,8 +233,6 @@ public class GameController {
             game.takeDiscardedCard(p, clickedCard);
         }
 
-
-
         application.unhighlightDrawPile();
         application.unhighlightDiscardPile();
         application.unhighlightButton(b);
