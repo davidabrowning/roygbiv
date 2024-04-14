@@ -82,11 +82,15 @@ public class GameController {
     // This method handles user clicking on the drawPile
     public void handleDrawPileClick() {
 
+        // If game over, reset the game and play again
+        if (isGameOver()) {
+            playAgain();
+        }
+
         // Exit criteria:
-        // Game over
         // Some players still need to do initial two-card switch
-        if (isGameOver()) { return; }
         if (!game.allPlayersHaveCompletedInitialCardSwitch()) { return; }
+        if (game.hasCardBeenDrawn()) { return; }
 
         // Transfer highlighting from discardPile to drawPile
         // Set the desiredCard to the drawn card
