@@ -258,7 +258,10 @@ public class GameController {
         // If game is over, update the currentTurnLabel value to say "Game over!"
         // Otherwise, warn the user not to touch
         if (game.isGameOver()) {
+            p.recordAWin();
+            application.updatePlayerNameLabel(p);
             application.updateCurrentTurnLabel();
+
         } else {
             application.showFalseVictory(getPlayerNum(p));
         }
