@@ -207,6 +207,11 @@ public class RoygbivApplication extends Application {
         discardPileButton.setTextFill(c.getTextColor());
     }
 
+    public void updatePlayerNameLabel(Player p) {
+        int playerNum = gameController.getPlayerNum(p);
+        playerNameLabelList.get(playerNum).setText(p.toString());
+    }
+
     public void updateHandCardButtonText(Button b) {
         Card c = gameController.getMappedHandCard(b);
         b.setText(c.toString());
