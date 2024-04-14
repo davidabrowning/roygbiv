@@ -86,6 +86,7 @@ public class Game {
     }
 
     public Card drawCard() { return deck.drawCard(); }
+    public int getDrawPileSize() { return deck.drawPileSize(); }
     public Card getTopDiscardCard() { return deck.getTopDiscardCard(); }
     public boolean hasCardBeenDrawn() { return deck.hasCardBeenDrawn(); }
     public void discard(Card c) { deck.discard(c); }
