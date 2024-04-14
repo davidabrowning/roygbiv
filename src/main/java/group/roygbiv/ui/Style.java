@@ -10,16 +10,16 @@ import javafx.scene.text.Font;
 
 public class Style {
 
-    public static Font DEFAULT_FONT = new Font("Arial", 18);
+    public static final Font DEFAULT_FONT = new Font("Arial", 18);
 
-    public static int CARD_HEIGHT = 120;
-    public static int CARD_WIDTH = 100;
+    public static final int CARD_HEIGHT = 120;
+    public static final int CARD_WIDTH = 100;
 
-    public static int BORDER_RADIUS = 10;
-    public static int BACKGROUND_RADIUS = 10;
+    public static final int BORDER_RADIUS = 10;
+    public static final int BACKGROUND_RADIUS = 10;
 
-    public static Border unhighlightedBorder = new Border(new BorderStroke(Color.WHITESMOKE, BorderStrokeStyle.SOLID, new CornerRadii(BORDER_RADIUS), new BorderWidths(5)));
-    public static Border highlightedBorder = new Border(new BorderStroke(Color.LIGHTBLUE, BorderStrokeStyle.SOLID, new CornerRadii(BORDER_RADIUS), new BorderWidths(5)));
+    public static final Border unhighlightedBorder = new Border(new BorderStroke(Color.WHITESMOKE, BorderStrokeStyle.SOLID, new CornerRadii(BORDER_RADIUS), new BorderWidths(5)));
+    public static final Border highlightedBorder = new Border(new BorderStroke(Color.LIGHTBLUE, BorderStrokeStyle.SOLID, new CornerRadii(BORDER_RADIUS), new BorderWidths(5)));
 
     public static Background getBackground(Color c) {
         BackgroundFill bf = new BackgroundFill(c, new CornerRadii(BORDER_RADIUS + BACKGROUND_RADIUS), new Insets(0, 0, 0, 0));
