@@ -7,7 +7,7 @@ public class Game {
 
     private int turnCounter;
     private final List<Player> players;
-    private final Deck deck;
+    private Deck deck;
     private boolean isGameOver;
 
     public Game() {
@@ -15,6 +15,15 @@ public class Game {
         deck = new Deck();
         players = new ArrayList<>();
         isGameOver = false;
+    }
+
+    public void reset() {
+        isGameOver = false;
+        for (Player p : players) {
+            p.resetHand();
+        }
+        deck = new Deck();
+        dealCards();
     }
 
     public void advanceTurn() {
