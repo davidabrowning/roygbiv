@@ -3,7 +3,8 @@ package group.roygbiv.domain;
 public class Player {
 
     private final String name;
-    private final Hand hand;
+    private Hand hand;
+    private int wins;
 
     // Constructor
     public Player(String name) {
