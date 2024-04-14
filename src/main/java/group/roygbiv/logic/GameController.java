@@ -34,6 +34,13 @@ public class GameController {
         application.buildGUI();
     }
 
+    public void playAgain() {
+        game.reset();
+        buttonCardMap.clear();
+        application.buildGUI();
+        desiredCard = null;
+    }
+
     public void mapButtonToCard(Button b, Card c) {
         buttonCardMap.put(b, c);
     }
