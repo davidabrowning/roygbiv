@@ -42,6 +42,7 @@ public class GameController {
         return game.getPlayers();
     }
     public Player getCurrentTurnPlayer() { return game.getCurrentTurnPlayer(); }
+    public int getDrawPileSize() { return game.getDrawPileSize(); }
     public Card getTopDiscardCard() { return game.getTopDiscardCard(); }
     public int getPlayerNum(Player p) { return game.getPlayerNum(p); }
     public boolean allPlayersHaveCompletedInitialCardSwitch() { return game.allPlayersHaveCompletedInitialCardSwitch(); }
