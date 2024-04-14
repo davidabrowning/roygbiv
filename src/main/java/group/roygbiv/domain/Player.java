@@ -10,16 +10,30 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.hand = new Hand();
+        this.wins = 0;
     }
 
     // ---------------------------------------------------------------------------------------------------------------
     // Getters, setters, and toString
 
     public Hand getHand() { return hand; }
+    public int getWins() { return wins; }
 
     @Override
     public String toString() {
-        return name;
+        if (wins == 0) {
+            return name;
+        }
+        return name + " (" + wins + ")";
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
+    public void resetHand() {
+        this.hand = new Hand();
+    }
+
+    public void recordAWin() {
+        wins++;
     }
 
 }
