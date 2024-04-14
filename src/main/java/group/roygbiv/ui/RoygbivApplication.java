@@ -194,7 +194,7 @@ public class RoygbivApplication extends Application {
     }
 
     public void resetDrawPileButton() {
-        drawPileButton.setText("Draw card");
+        drawPileButton.setText("Draw card " + gameController.getDrawPileSize());
         Style.formatButton(drawPileButton);
         drawPileButton.setBackground(Style.getBackground(Color.LIGHTGRAY));
         drawPileButton.setTextFill(Color.BLACK);
