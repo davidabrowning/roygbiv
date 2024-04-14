@@ -9,6 +9,7 @@ public class Deck {
     private final List<Card> drawPile;
     private Card drawnCard;
     private final List<Card> discardPile;
+    @SuppressWarnings("FieldCanBeLocal")
     private final int DECK_SIZE = 60;
 
     public Deck() {
