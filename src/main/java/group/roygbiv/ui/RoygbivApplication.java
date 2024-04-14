@@ -221,7 +221,7 @@ public class RoygbivApplication extends Application {
 
     public void updateCurrentTurnLabel() {
         if (gameController.isGameOver()) {
-            currentTurnLabel.setText("Game over!");
+            currentTurnLabel.setText("Game over! Click on the draw pile to continue playing.");
         } else if (!gameController.allPlayersHaveCompletedInitialCardSwitch()) {
             currentTurnLabel.setText(gameController.getCurrentTurnPlayer() + ", please swap two cards in your hand:");
         } else {
