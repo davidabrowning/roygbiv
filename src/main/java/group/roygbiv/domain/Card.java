@@ -17,7 +17,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return String.valueOf(value);
+        return String.valueOf(value+1);
     }
 
     // ----------------------------------------------------------------------------------------------------------------
